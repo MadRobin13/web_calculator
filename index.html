@@ -71,7 +71,7 @@
     <h1 id="title">Web Calculator!</h1>
     <div id="calcBody">
         <div id="screen">
-            <p id="display">1 + 2</p>
+            <p id="display"></p>
         </div>
         <div id="buttons">  
             <div>
@@ -102,3 +102,29 @@
     </div>
 </body>
 </html>
+<script>
+
+    displayValue = display.innerText;
+
+    document.addEventListener("click", function(e) {
+        if (e.target.tagName === "BUTTON") {
+            let display = document.getElementById("display");
+            let value = e.target.innerText;
+            if (value === "=") {
+                display.innerText = eval(displayValue.innerText);
+            } else {
+                display.innerText += value;
+
+                if (value === "^") {
+                    displayValue += "**";
+                }
+                if (value === "x") {
+                    displayValue += "*";
+                }
+                else {
+                    displayValue += value;
+                }
+            }
+        }
+    });
+</script>
