@@ -104,26 +104,18 @@
 </html>
 <script>
 
-    displayValue = display.innerText;
 
     document.addEventListener("click", function(e) {
         if (e.target.tagName === "BUTTON") {
             let display = document.getElementById("display");
             let value = e.target.innerText;
             if (value === "=") {
-                display.innerText = eval(displayValue.innerText);
-            } else {
+                display.innerText = display.innerText.replace("x", "*").replace("^", "**");
+                display.innerText = eval(display.innerText);
+            } 
+            else
+            {
                 display.innerText += value;
-
-                if (value === "^") {
-                    displayValue += "**";
-                }
-                if (value === "x") {
-                    displayValue += "*";
-                }
-                else {
-                    displayValue += value;
-                }
             }
         }
     });
